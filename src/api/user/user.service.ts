@@ -9,6 +9,10 @@ export class UserService {
   @InjectRepository(User)
   private readonly repository: Repository<User>;
 
+  public getUsers(): Promise<User[]> {
+    return this.repository.find()
+  }
+
   public getUser(id: number): Promise<User> {
 
     return this.repository.findOneBy({id});
